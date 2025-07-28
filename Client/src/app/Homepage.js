@@ -1,99 +1,44 @@
+"use client";
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Grid, Box, Button } from '@mui/material';
-import styled from 'styled-components';
-import Students from "../assets/students.svg";
-import { LightPurpleButton } from '../components/buttonStyles';
+import Link from 'next/link';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';  
+
 
 const Homepage = () => {
     return (
-        <StyledContainer>
-            <Grid container spacing={0}>
+        <Container maxWidth="lg" sx={{ minHeight: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Grid container spacing={4} alignItems="center">
+                {/* @ts-ignore */}
                 <Grid item xs={12} md={6}>
-                    <img src={Students} alt="students" style={{ width: '100%' }} />
+                    <Box sx={{ width: '100%', textAlign: 'center' }}>
+                        {/* You can replace this with an SVG or image if available */}
+                        <Typography variant="h1" sx={{ fontWeight: 800, color: 'var(--primary, #fd7e14)' }}>
+                            🏫
+                        </Typography>
+                    </Box>
                 </Grid>
+                {/* @ts-ignore */}
                 <Grid item xs={12} md={6}>
-                    <StyledPaper elevation={3}>
-                        <StyledTitle>
-                            Welcome to
-                            <br />
-                            School Management
-                            <br />
-                            System
-                        </StyledTitle>
-                        <StyledText>
-                            Streamline school management, class organization, and add students and faculty.
-                            Seamlessly track attendance, assess performance, and provide feedback.
-                            Access records, view marks, and communicate effortlessly.
-                        </StyledText>
-                        <StyledBox>
-                            <StyledLink to="/choose">
-                                <LightPurpleButton variant="contained" fullWidth>
-                                    Login
-                                </LightPurpleButton>
-                            </StyledLink>
-                            <StyledLink to="/chooseasguest">
-                                <Button variant="outlined" fullWidth
-                                    sx={{ mt: 2, mb: 3, color: "#7f56da", borderColor: "#7f56da" }}
-                                >
-                                    Login as Guest
-                                </Button>
-                            </StyledLink>
-                            <StyledText>
-                                Don't have an account?{' '}
-                                <Link to="/Adminregister" style={{color:"#550080"}}>
-                                    Sign up
-                                </Link>
-                            </StyledText>
-                        </StyledBox>
-                    </StyledPaper>
+                    <Box sx={{ p: 4, borderRadius: 4, boxShadow: 3, bgcolor: '#fff' }}>
+                        <Typography variant="h3" sx={{ fontWeight: 700, mb: 2, color: '#252525' }}>
+                            Welcome to NSPM School Management System
+                        </Typography>
+                        <Typography sx={{ mb: 3, color: '#555' }}>
+                            Streamline school management, class organization, and add students and faculty. Seamlessly track attendance, assess performance, and provide feedback. Access records, view marks, and communicate effortlessly.
+                        </Typography>
+                        <Button variant="contained" color="primary" component={Link} href="/admin/classes">
+                            Get Started
+                        </Button>
+                    </Box>
                 </Grid>
             </Grid>
-        </StyledContainer>
+        </Container>
     );
 };
 
 export default Homepage;
 
-const StyledContainer = styled(Container)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
-
-const StyledPaper = styled.div`
-  padding: 24px;
-  height: 100vh;
-`;
-
-const StyledBox = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content:center;
-  gap: 16px;
-  padding: 24px;
-`;
-
-const StyledTitle = styled.h1`
-  font-size: 3rem;
-  color: #252525;
-  /* font-family: "Manrope"; */
-  font-weight: bold;
-  padding-top: 0;
-  letter-spacing: normal;
-  line-height: normal;
-`;
-
-const StyledText = styled.p`
-  /* color: #550080; */
-  margin-top: 30px;
-  margin-bottom: 30px; 
-  letter-spacing: normal;
-  line-height: normal;
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
